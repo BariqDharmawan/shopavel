@@ -4,7 +4,7 @@
 
 
 @section('header-class', 'flex flex-col bg-fixed bg-cover h-screen')
-@section('header-bg', asset('img/header-landing.jpg'))
+@section('header-bg', asset('img/static/header-landing.jpg'))
 
 @section('header')
 <div class="container mx-auto h-full flex items-center justify-center lg:justify-start">
@@ -54,7 +54,7 @@
             @endforeach
         </div>
         <div class="mt-5 py-24 bg-fixed w-full relative" id="section-catalog__promo" 
-        style="background-image: url('{{ asset("img/special-edition.jpg") }}')">
+        style="background-image: url('{{ asset("img/static/special-edition.jpg") }}')">
             <div class="bg-overlay bg-overlay--blue-gradient 
             absolute top-0 left-0 h-full w-full opacity-50"></div>
             <div class="px-5 md:px-10 lg:px-24">

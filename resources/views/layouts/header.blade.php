@@ -91,9 +91,6 @@ style="background-image: url(@yield('header-bg'))">
                     </ul>
                 </li>
                 <li class="nav__item nav__item--menu lg:mr-6 lg:flex-grow lg:justify-center">
-                    <a href="{{ route('game.index') }}" class="nav__link">Game</a>
-                </li>
-                <li class="nav__item nav__item--menu lg:mr-6 lg:flex-grow lg:justify-center">
                     <a href="{{ route('store.toko-point.index') }}" class="nav__link">Point</a>
                 </li>
                 <li class="nav__item nav__item--menu lg:mr-6 lg:flex-grow lg:justify-center">

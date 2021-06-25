@@ -32,23 +32,6 @@
                         to="{{ route('admin.payment.index') }}"/>
                     </ul>
                 </x-menu-admin>
-                @if (Auth::user()->role == 'superadmin')
-                    <x-menu-admin icon="joystick" class="has-arrow"
-                    text="game management" to="{{ route('landing-page') }}">
-                        <ul aria-expanded="false" class="collapse first-level base-level-line">
-                            @if (auth()->user()->role == 'superadmin')
-                            <x-menu-admin icon="customize" type="solid" 
-                            text="Current Game" to="{{ route('admin.game.current') }}" />
-                            <x-menu-admin icon="customize" type="solid" 
-                            text="Custom game" to="{{ route('admin.game.custom-game') }}" />
-                            @endif
-                            <x-menu-admin icon="history" 
-                            text="Game history" to="{{ route('admin.game.history') }}" />
-                            <x-menu-admin icon="list-ol" 
-                            text="Game Rules" to="{{ route('admin.rules.index') }}" />
-                        </ul>
-                    </x-menu-admin>
-                @endif
                 <x-menu-admin icon="purchase-tag" 
                 text="Discount Voucher" to="{{ route('admin.vouchers.index') }}" />
                 @if (auth()->user()->role === 'superadmin')

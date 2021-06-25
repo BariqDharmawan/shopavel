@@ -92,17 +92,6 @@ Route::namespace('Customer')->middleware(['auth', 'customer'])->group(function (
             Route::post('/delete', 'UserAddressController@destroy')->name('destroy');
         });
     });
-    // game routes
-    Route::prefix('game')->name('game.')->group(function () {
-        Route::get('/', 'GameController@index')->name('index');
-        Route::post('bid', 'GameController@makeBid')->name('bid');
-        Route::post('bid/cancel', 'GameController@cancelBid')->name('bid.cancel');
-        Route::post('current', 'GameController@currentGame')->name('current');
-        Route::get('test', 'GameController@test');
-        Route::get('game-history', 'GameController@gameHistory')->name('game-history');
-        Route::get('bid-history', 'GameController@bidHistory')->name('bid-history');
-        Route::get('option-reward', 'GameController@optionReward')->name('option-reward');
-    });
 });
 
 // admin route
@@ -154,16 +143,6 @@ Route::namespace('Admin')->prefix('admin')->middleware(['admin', 'auth'])->name(
             'store', 'index', 'destroy', 'update'
         ]);
         Route::resource('setting' , 'SettingController')->only(['index', 'update']);
-
-        
-        // game management routes
-        Route::name('game.')->prefix('game')->group(function () {
-            Route::get('history', 'GameController@history')->name('history');
-            Route::get('custom-game', 'GameController@customGame')->name('custom-game');
-            Route::post('custom-game', 'GameController@storeCustomGame')->name('custom-game.store');
-            Route::get('current', 'GameController@currentGame')->name('current');
-            Route::post('current', 'GameController@setGameWinner')->name('current.set-winner');
-        });
     }
 );
 
