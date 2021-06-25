@@ -13,14 +13,15 @@ npm-debug.log
 yarn-error.log
 public/stuff/.~lock.GAME point.docx#
 public/stuff/.~lock.Sample game.xlsx#
-public/js/dashboard-admin.js
-public/js/all-admin.js
+public/asset/admin/dashboard-admin.js
 public/storage
 public/js/all-client.js
-public/css/native.css
-public/js/dashboard-admin.js.LICENSE.txt
-public/js/dashboard-admin.js
+public/asset/user/native.css
+public/asset/admin/dashboard-admin.js.LICENSE.txt
+public/asset/admin/dashboard-admin.js
 public/js/app.js
 public/js/all-client.js.LICENSE.txt
 public/js/all-client.js
-public/js/all-admin.js
+public/img/static
+
+public/asset/admin/admin-dashboard.css

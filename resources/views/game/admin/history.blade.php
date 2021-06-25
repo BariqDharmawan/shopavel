@@ -30,17 +30,16 @@
                                 <tbody>
                                     @foreach ($games as $game)
                                         <tr class="product-item">
-                                            @include('partial.tbody', [
-                                                'td' => [
-                                                    $game->game_period,
-                                                    $game->bid_count,
-                                                    $game->winnerOption->type == 'color'
-                                                    ? $game->winnerOption->color
-                                                    : $game->winnerOption->number,
-                                                    $game->point_in,
-                                                    $game->point_out
-                                                ]
-                                            ])
+                                            <td>{{ $game->game_period }}</td>
+                                            <td>{{ $game->bid_count }}</td>
+                                            <td>
+                                                {{ 
+                                                    $game->winnerOption->type == 'color' ?$game->winnerOption->color :
+                                                    $game->winnerOption->number
+                                                }}
+                                            </td>
+                                            <td>{{ $game->point_in }}</td>
+                                            <td>{{ $game->point_out }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

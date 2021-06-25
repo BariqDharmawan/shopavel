@@ -33,7 +33,3 @@
         @endfor
     </div>
 @endsection
-
-@push('scripts')
-    {{-- <script src="{{ asset('template/dist/js/dashboard1.min.js') }}"></script> --}}
-@endpush

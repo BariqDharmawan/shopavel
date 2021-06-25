@@ -95,7 +95,7 @@ class AdminController extends Controller
             route('admin.products.index')
         ];
 
-        return view('admin.dashboard', [
+        return view('dashboard.admin', [
             'menus' => ['Total products', 'Total order', 'Total customer'],
             'valueMenus' => [Product::count(), Order::count(), $totalUser],
             'links' => $links

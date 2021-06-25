@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ ucfirst(Auth::user()->name) }} - @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/admin/admin-dashboard.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/v/bs4/dt-1.10.24/b-1.7.0/b-html5-1.7.0/datatables.min.css" />
+    href="https://cdn.datatables.net/v/bs4/dt-1.10.24/b-1.7.0/b-html5-1.7.0/datatables.min.css" />
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -47,10 +47,25 @@
         </div>
     </div>
     @yield('components')
+    <script src="{{ asset('library/jquery.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/popper.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/datatables.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/app-style-switcher.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/feather.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/sparkline.js') }}"></script>
+    <script src="{{ asset('asset/admin/sidebarmenu.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/custom.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/prism.js') }}"></script>
+    <script src="{{ asset('asset/admin/d3.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/c3.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="{{ asset('js/all-admin.js') }}"></script>
+    <script src="{{ asset('asset/admin/dashboard-admin.js') }}"></script>
     @stack('scripts')
 </body>
 

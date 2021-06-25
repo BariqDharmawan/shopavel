@@ -14,7 +14,7 @@ aria-labelledby="{{ $id }}Label" aria-hidden="true">
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary text-capitalize" form="{{ $formTarget }}">
-                    {{ $titleModal }}
+                    {{ $actionText == '' ? $titleModal : $actionText }}
                 </button>
             </div>
         </div><!-- /.modal-content -->

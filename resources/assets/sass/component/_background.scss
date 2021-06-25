@@ -2,7 +2,7 @@ $colors: red, green, purple;
 
 @each $color in $colors {
     .bg {
-        &-#{$color} {
+        &-#{"" + $color} {
             background-color: $color;
         }
     }

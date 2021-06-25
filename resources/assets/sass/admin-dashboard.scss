@@ -1,8 +1,9 @@
-@import './../template/assets/extra-libs/c3/c3.min.css';
-@import './../template/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css';
-@import './../template/dist/css/style.css';
-@import './../plugin/datatables.net/css/datatables.min.css';
+@import './vendor/c3.min.css';
+@import './vendor/jquery-jvectormap-2.0.2.css';
+@import './vendor/template.css';
+@import './vendor/datatables.min.css';
 @import './component/background';
+@import './vendor/chartist.min.css';
 
 #dashboardPage {
     #add-product-btn {

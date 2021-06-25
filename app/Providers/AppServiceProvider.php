@@ -36,29 +36,32 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::share('categories', ProductCategory::all());
-
-        View::composer('*', function ($view) {
-            $view->with('auth', Auth::user());
-
-            //get all column on UserAddress except user_id
-            $userAddress = new UserAddress();
-            $addressColumnExceptUserId = array_diff($userAddress->getFillable(), ['user_id']);
-            $inputIds = array_map(function ($label) {
-                return Str::kebab($label);
-            }, $addressColumnExceptUserId);
-            $inputText = array_map(function ($text) {
-                return Str::of($text)->replace('_', ' ')->title();
-            }, $addressColumnExceptUserId);
-
-            $view->with('columns', $addressColumnExceptUserId);
-            $view->with('inputIds', $inputIds);
-            $view->with('inputText', $inputText);
-        });
+        
 
         Blade::directive('currency', function ($value) {
             return "Rp <?php echo number_format($value) ?>";
         });
+
+        try {
+            View::share('categories', ProductCategory::all());
+            View::composer('*', function ($view) {
+                $view->with('auth', Auth::user());
+
+                //get all column on UserAddress except user_id
+                $userAddress = new UserAddress();
+                $addressColumnExceptUserId = array_diff($userAddress->getFillable(), ['user_id']);
+                $inputIds = array_map(function ($label) {
+                    return Str::kebab($label);
+                }, $addressColumnExceptUserId);
+                $inputText = array_map(function ($text) {
+                    return Str::of($text)->replace('_', ' ')->title();
+                }, $addressColumnExceptUserId);
+
+                $view->with('columns', $addressColumnExceptUserId);
+                $view->with('inputIds', $inputIds);
+                $view->with('inputText', $inputText);
+            });
+        } catch (\Throwable $th) {}
 
         Blade::component('adminmart-alert', AdminMartAlert::class);
     }

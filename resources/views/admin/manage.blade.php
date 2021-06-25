@@ -22,14 +22,14 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered no-wrap table-manage-admin" id="zero_config">
                             @include('partial.thead', [
-                            'thead' => [
-                                'No',
-                                'name',
-                                'email',
-                                'phone',
-                                'joined at',
-                                'action'
-                            ]
+                                'thead' => [
+                                    'No',
+                                    'name',
+                                    'email',
+                                    'phone',
+                                    'joined at',
+                                    'action'
+                                ]
                             ])
                             <tbody>
                                 @foreach ($admins as $account)
@@ -95,31 +95,14 @@
         ])
     </x-modal-template>
 
-    <div class="modal" tabindex="-1" role="dialog" id="modalConfirmDeleteAdmin">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">warning</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Apa Anda yakin ingin menghapus akun admin ini ?</p>
-                    <form action="" method="POST" id="form-delete-admin">
-                        @csrf @method('DELETE')
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" id="confirmDeleteBtn"
-                    form="form-delete-admin">DELETE</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">
-                        CANCEL
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-modal-template id="modalConfirmDeleteAdmin" 
+    title-modal="Konfirmasi hapus admin" action-text="Iya" form-target="form-delete-admin">
+        <p>Apa Anda yakin ingin menghapus akun admin ini ?</p>
+        <form action="" method="POST" id="form-delete-admin">
+            @csrf @method('DELETE')
+        </form>
+    </x-modal-template>
+
 @endsection
 
 @push('scripts')
