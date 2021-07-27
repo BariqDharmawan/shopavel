@@ -8,7 +8,7 @@
     @if ($order->refund_method != 'point')
     <p>Tanggal refund: {{ $order->refund->created_at }}</p>
     Silahkan lihat bukti refund di dashboard mu
-    @component('mail::button', ['url' => route('my-account.history.order')])
+    @component('mail::button', ['url' => route('my-account.order.history')])
     Pergi ke dashboard
     @endcomponent
     @else

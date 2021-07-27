@@ -9,9 +9,7 @@ class PointHistory extends Model
 {
     use HasFactory;
 
-    const GAME_BID_MESSAGE = "place bid to game";
     const PLACE_ORDER_MESSAGE = "place an order";
-    const GAME_WINNER_MESSAGE = "game winner reward";
     const ORDER_POINT_REFUND_MESSAGE = "refunded order";
     const ORDER_REWARD_MESSAGE = "finished order reward";
 

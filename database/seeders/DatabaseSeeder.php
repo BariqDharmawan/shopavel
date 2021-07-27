@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
             SiteSettingSeeder::class,
             UserSeeder::class,
             ProvinceSeeder::class,
-            GameOptionSeeder::class,
-            GameOptionRewardSeeder::class,
         ]);
         if (env('APP_ENV') == 'local') {
             $this->call([

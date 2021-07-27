@@ -9,7 +9,7 @@
 @section('header')
 <div class="container mx-auto h-full flex items-center justify-center lg:justify-start">
     <div class="bg-overlay bg-overlay--blue"></div>
-    <x-box-promo heading="Shopentuk Shop" subheadClass="text-3xl"
+    <x-box-promo heading="{{ config('app.name') }} Shop" subheadClass="text-3xl"
     subheading="Harga Terjangkau, kualitas terjamin"
         primary-btn-text="Shop now" primary-btn-link="#section-new-product"
         primary-btn-type="bg-white hover:bg-gray-100 text-gray-800 border 
@@ -58,8 +58,8 @@
             <div class="bg-overlay bg-overlay--blue-gradient 
             absolute top-0 left-0 h-full w-full opacity-50"></div>
             <div class="px-5 md:px-10 lg:px-24">
-                <x-box-promo heading="Shopentuk Shop News"
-                subheading="Lihat Berita Terbaru seputar product, tips berbelanja dan promo terbaru dari shopentuk shop"
+                <x-box-promo heading="{{ config('app.name') }} Shop News"
+                subheading="Lihat Berita Terbaru seputar product, tips berbelanja dan promo terbaru dari {{ config('app.name') }} shop"
                 primary-btn-text="Lihat Sekarang" primary-btn-link="{{ route('news.index') }}" subheadClass="text-base"
                 primary-btn-type="bg-white hover:bg-gray-100 text-gray-800 border border-gray-400 shadow order-1">
                 </x-box-promo>

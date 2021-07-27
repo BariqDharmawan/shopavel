@@ -46,11 +46,6 @@ class HomeController extends Controller
                 'route' => route('store.voucher.index')
             ],
             (object) [
-                'heading' => 'Game',
-                'subheading' => 'Play Game and get Point',
-                'route' => route('game.index')
-            ],
-            (object) [
                 'heading' => 'Toko Point',
                 'subheading' => 'Redeem your point with product, voucher or cash',
                 'route' => route('store.toko-point.index')

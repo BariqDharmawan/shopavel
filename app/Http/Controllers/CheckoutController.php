@@ -103,7 +103,7 @@ class CheckoutController extends Controller
             ]);
         }
 
-        return redirect()->route('my-account.current.order')->with([
+        return redirect()->route('my-account.order.current')->with([
             'success' => 'sukses membuat order' . (!$isAllPoint ? ", silahkan bayar pesanan anda !" : ""),
         ]);
     }

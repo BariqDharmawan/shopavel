@@ -12,7 +12,7 @@
             <li class="pb-3">
                 @if ($product->discount)
                 <x-card-product data-product-id="{{ $product->id }}"
-                    product-img="{{ $product->mainImage ? Storage::url($product->mainImage->url) : 'https://via.placeholder.com/200' }}"
+                    product-img="{{ $product->mainImage->url }}"
                     product-name="{{ Str::words($product->title, 2) }}"
                     product-category="{{ $product->productCategory->title }}"
                     product-category-id="{{ $product->productCategory->id }}"
@@ -21,7 +21,7 @@
                     product-is-obral="false" is-horizontal="true" is-digital-product="true" />
                 @else
                 <x-card-product
-                    product-img="{{ $product->mainImage ? Storage::url($product->mainImage->url) : 'https://via.placeholder.com/200' }}"
+                    product-img="{{ $product->mainImage->url }}"
                     product-name="{{ Str::words($product->title, 2) }}"
                     product-category="{{ $product->productCategory->title }}"
                     product-category-id="{{ $product->productCategory->id }}"

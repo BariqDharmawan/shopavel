@@ -16,10 +16,7 @@ class RulesController extends Controller
      */
     public function index()
     {
-        return view('game.rule.manage')->with([
-            'title' => 'Management Game Rules',
-            'rules' => Rules::all()
-        ]);
+        //
     }
 
     /**

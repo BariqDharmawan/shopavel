@@ -85,7 +85,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'sanchez77rodriguez@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'Admin Shopentuk'),
+        'name' => env('MAIL_FROM_NAME', 'Admin ' . config('app.name')),
     ],
 
     /*

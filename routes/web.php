@@ -4,19 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@landingPage')->name('landing-page');
-Route::resource('contact-us', 'FeedbackController')->only('index', 'store', 'destroy');
+Route::resource('contact-us', 'FeedbackController')->except('create', 'update', 'edit');
 Route::get('news/archive', 'NewsController@index')->name('news.index');
-
-Route::prefix('admin')->name('admin.')->middleware(['admin', 'auth'])->group(function () {
-    Route::get('news/manage', 'NewsController@index')->name('news.manage');
-    Route::post('news/store', 'NewsController@store')->name('news.store');
-    Route::delete('news/delete/{news}', 'NewsController@destroy')->name('news.destroy');
-    Route::put('news/update/{news}', 'NewsController@update')->name('news.update');
-    Route::get('feedback-customer', 'FeedbackController@manage')->name(
-        'contact-us.manage'
-    );
-});
-
 
 Route::prefix('voucher')->name('voucher.')->group(function () {
     Route::post('validate', 'VoucherController@check')->name('validate');
@@ -61,7 +50,6 @@ Route::prefix('refund')->name('refund.')->group(function (){
     Route::post('kirim', 'RefundController@kirimBukti')->name('kirim-bukti')->middleware('admin');
 });
 
-
 // customer only routes
 Route::namespace('Customer')->middleware(['auth', 'customer'])->group(function () {
     // my account routes
@@ -72,14 +60,16 @@ Route::namespace('Customer')->middleware(['auth', 'customer'])->group(function (
             'favorite.remove'
         );
         Route::post('update', 'DashboardController@updateAccount')->name('update');
-        Route::get('order/history', 'DashboardController@orderHistory')->name('history.order');
-        Route::put('order/finish/{order}', 'DashboardController@finishOrder')->name(
-            'finish.order'
-        );
-        Route::get('order/current', 'DashboardController@currentOrder')->name('current.order');
-        Route::put('order/cancel/{order}', 'DashboardController@cancelBeforePaid')->name(
-            'cancel.order'
-        );
+        
+        Route::prefix('order')->name('order.')->group(function (){
+            Route::get('history', 'DashboardController@orderHistory')->name('history');
+            Route::put('finish/{order}', 'DashboardController@finishOrder')->name('finish');
+            Route::get('current', 'DashboardController@currentOrder')->name('current');
+            Route::put('cancel/{order}', 'DashboardController@cancelBeforePaid')->name('cancel');
+        });
+
+        
+
         Route::get('detail', 'DashboardController@accountDetail')->name('account.detail');
         Route::get('point', 'DashboardController@pointHistory')->name('point.history');
         // address routes
@@ -95,46 +85,56 @@ Route::namespace('Customer')->middleware(['auth', 'customer'])->group(function (
 });
 
 // admin route
-Route::namespace('Admin')->prefix('admin')->middleware(['admin', 'auth'])->name('admin.')
-->group(
-    function () {
-        Route::get('manage-customer', 'AdminController@manageCustomer')->name('manage-customer');
-        Route::put('manage-customer/{user}', 'AdminController@updateCustomer')->name('manage-customer.update');
+Route::prefix('admin')->middleware(['admin', 'auth'])->name('admin.')->group(function () {
+
+    Route::prefix('news')->name('news.')->group(function (){
+        Route::get('manage', 'NewsController@index')->name('manage');
+        Route::post('store', 'NewsController@store')->name('store');
+        Route::delete('delete/{news}', 'NewsController@destroy')->name('destroy');
+        Route::put('update/{news}', 'NewsController@update')->name('update');
+    });
+
+    Route::get('feedback-customer', 'FeedbackController@manage')->name('contact-us.manage');
+
+    Route::namespace('Admin')->group(function (){
+
+        Route::prefix('manage-customer')->name('manage-customer.')->group(function(){
+            Route::get('/', 'AdminController@manageCustomer')->name('index');
+            Route::put('/{user}', 'AdminController@updateCustomer')->name('update');
+        });
+
         Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
+
         Route::prefix('order')->name('order.')->group(function () {
             Route::get('/', 'OrderController@index')->name('index');
             Route::get('new', 'OrderController@newOrder')->name('new');
             Route::put('cancel/{order}', 'OrderController@cancel')->name('cancel');
-            Route::put('submit-voucher-code/{order}', 'OrderController@submitVoucherCode')->name('submit-voucher-code');
-            Route::put('change-status/{order}', 'OrderController@changeStatus')->name(
-                'change-status'
+            Route::put('submit-voucher-code/{order}', 'OrderController@submitVoucherCode')->name(
+                'submit-voucher-code'
             );
+            Route::put('change-status/{order}', 'OrderController@changeStatus')->name('change-status');
         });
 
-        Route::get('all-category/{cat}/sub', 'AllCategoryController@subCategoryIndex')->name(
-            'all-category.sub.index'
-        );
-        Route::post('all-category/{cat}/sub/store', 'AllCategoryController@subCategoryStore')
-        ->name('all-category.sub.store');
-        Route::post('all-category/{cat}/sub/update/{sub}', 'AllCategoryController@subCategoryUpdate')->name(
-            'all-category.sub.update'
-        );
-        Route::delete('all-category/{cat}/sub/destroy/{sub}', 'AllCategoryController@subCategoryDestroy')->name(
-            'all-category.sub.destroy'
-        );
+        Route::prefix('all-category')->name('all-category.')->group(function(){
 
-        Route::get('all-category', 'AllCategoryController@parentCategoryIndex')->name(
-            'all-category.index'
-        );
-        Route::post('all-category', 'AllCategoryController@parentCategoryStore')->name(
-            'all-category.store'
-        );
-        Route::put('all-category/{id}', 'AllCategoryController@parentCategoryUpdate')->name(
-            'all-category.update'
-        );
-        Route::delete('all-category/{id}', 'AllCategoryController@parentCategoryDestroy')->name(
-            'all-category.destroy'
-        );
+            Route::prefix('/{cat}/sub')->group(function (){
+                Route::get('/', 'AllCategoryController@subCategoryIndex')->name('sub.index');
+                Route::post('store', 'AllCategoryController@subCategoryStore')->name('sub.store');
+                Route::post('update/{sub}', 'AllCategoryController@subCategoryUpdate')->name(
+                    'sub.update'
+                );
+                Route::delete('destroy/{sub}', 'AllCategoryController@subCategoryDestroy')->name(
+                    'sub.destroy'
+                );
+            });
+
+            Route::get('/', 'AllCategoryController@parentCategoryIndex')->name('index');
+            Route::post('/', 'AllCategoryController@parentCategoryStore')->name('store');
+            Route::put('/{id}', 'AllCategoryController@parentCategoryUpdate')->name('update');
+            Route::delete('/{id}', 'AllCategoryController@parentCategoryDestroy')->name('destroy'); 
+    
+        });
+        
         Route::resource('products' , 'ProductController');
         Route::resource('payment' , 'PaymentController');
         Route::resource('product-discounts' , 'ProductDiscountController');
@@ -143,11 +143,9 @@ Route::namespace('Admin')->prefix('admin')->middleware(['admin', 'auth'])->name(
             'store', 'index', 'destroy', 'update'
         ]);
         Route::resource('setting' , 'SettingController')->only(['index', 'update']);
-    }
-);
+    });
+});
 
 Route::prefix('superadmin')->middleware('superadmin')->name('superadmin.')->group(function () {
-    Route::resource('admin', 'Admin\AdminController')->only(
-        'index', 'store', 'update', 'destroy'
-    );
+    Route::resource('admin', 'Admin\AdminController')->except(['edit', 'create']);
 });

@@ -12,7 +12,7 @@
                 @if ($favorite->product->discount)
                     <x-card-product
                     class="items-center"
-                    product-img="{{ $favorite->mainImage ? Storage::url($favorite->mainImage->url) : 'https://via.placeholder.com/200' }}"
+                    product-img="{{ $favorite->mainImage->url }}"
                     product-name="{{ Str::words($favorite->product->title, 2) }}"
                     product-category="{{ $favorite->product->productCategory->title }}" 
                     product-category-id="{{ $favorite->product->productCategory->id }}" 
@@ -42,7 +42,7 @@
                 @else
                     <x-card-product
                     class="items-center"
-                    product-img="{{ $favorite->product->mainImage ? Storage::url($favorite->product->mainImage->url) : 'https://via.placeholder.com/200' }}"
+                    product-img="{{ $favorite->product->mainImage->url }}"
                     product-name="{{ Str::words($favorite->product->title, 2) }}"
                     product-category="{{ $favorite->product->productCategory->title }}" 
                     product-category-id="{{ $favorite->product->productCategory->id }}" 

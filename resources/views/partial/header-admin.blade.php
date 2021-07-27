@@ -7,7 +7,7 @@
             </a>
             <div class="navbar-brand">
                 <a href="{{ route('landing-page') }}">
-                    <span class="logo-text">Shopentuk</span>
+                    <span class="logo-text">{{ config('app.name') }}</span>
                 </a>
             </div>
             <a class="topbartoggler d-block d-md-none waves-effect waves-light" 

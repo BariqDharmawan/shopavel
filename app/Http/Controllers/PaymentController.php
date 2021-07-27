@@ -54,7 +54,7 @@ class PaymentController extends Controller
                 ]);
             }
         }
-        return redirect()->route('my-account.current.order')->with(['success' => 'sukses membuat konfirmasi pembayaran']);
+        return redirect()->route('my-account.order.current')->with(['success' => 'sukses membuat konfirmasi pembayaran']);
     }
 
     public function inputResi()

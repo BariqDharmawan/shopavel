@@ -6,7 +6,7 @@
 
 <h1>Orderan kamu dicancel admin, kamu bisa refund melalui dashboard</h1>
 
-@component('mail::button', ['url' => route('my-account.current.order')])
+@component('mail::button', ['url' => route('my-account.order.current')])
     See order refund
 @endcomponent
 

@@ -1,6 +1,5 @@
 <div class="modal fade" id="modal-edit-product" tabindex="-1" role="dialog" aria-labelledby="modal-edit-product-label"
     aria-hidden="true">
-    {{-- {{ $product->mainImage ? Storage::url($product->mainImage->url) : 'https://via.placeholder.com/200' }} --}}
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

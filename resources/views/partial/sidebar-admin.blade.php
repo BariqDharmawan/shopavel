@@ -41,7 +41,7 @@
                 <x-menu-admin icon="help-circle" text="Feedback Customer" 
                 to="{{ route('admin.contact-us.manage') }}"/>
                 <x-menu-admin icon="user-detail" type="solid" 
-                to="{{ route('admin.manage-customer') }}" text="List customer" />
+                to="{{ route('admin.manage-customer.index') }}" text="List customer" />
                 <x-menu-admin icon="news" 
                 to="{{ route('admin.news.manage') }}" text="News" />
             </ul>

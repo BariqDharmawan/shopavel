@@ -15,7 +15,7 @@
                     @if ($product->discount)
                         <x-card-product
                             data-product-id="{{ $product->id }}"
-                            product-img="{{ $product->mainImage ? Storage::url($product->mainImage->url) : 'https://via.placeholder.com/200' }}" 
+                            product-img="{{ $product->mainImage->url }}" 
                             product-name="{{ $product->title }}"
                             product-category="{{ $product->productCategory->title }}" 
                             product-category-id="{{ $product->productCategory->id }}" 
@@ -28,7 +28,7 @@
                         />
                     @else
                         <x-card-product 
-                            product-img="{{ $product->mainImage ? Storage::url($product->mainImage->url) : 'https://via.placeholder.com/200' }}" 
+                            product-img="{{ $product->mainImage->url }}" 
                             product-name="{{ $product->title }}"
                             product-category="{{ $product->productCategory->title }}" 
                             product-category-id="{{ $product->productCategory->id }}" 

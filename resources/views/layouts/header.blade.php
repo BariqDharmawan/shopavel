@@ -107,7 +107,7 @@ style="background-image: url(@yield('header-bg'))">
                         @auth
                             @if (Auth::user()->role == 'customer')
                                 <x-menu-standar id="menu-my-akun-akun-saya" text="Akun saya" 
-                                to="{{ route('my-account.history.order') }}" have-icon="false" />
+                                to="{{ route('my-account.order.history') }}" have-icon="false" />
                                 <x-menu-standar id="menu-favorite-product" 
                                 text="Favorite Product"
                                 to="{{ route('my-account.product.favorite') }}" 

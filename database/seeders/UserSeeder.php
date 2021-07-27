@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'email' => 'superadmin@mail.com',
                 'phone' => '1234567890',
                 'role' => 'superadmin',
-                'password' => Hash::make('@shopentuk2021@'),
+                'password' => Hash::make('@' . config('app.name') . '2021@'),
                 'created_at' => Carbon::now()
             ]);
         } else {

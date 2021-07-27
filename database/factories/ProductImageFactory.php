@@ -23,14 +23,7 @@ class ProductImageFactory extends Factory
     public function definition()
     {
         return [
-            'url' => $this->faker->randomElement([
-                'img/hoodie.jpg',
-                'img/telkomsel.jpg',
-                'img/bag.jpg',
-                'img/hoodie_blue.jpg',
-                'img/jeans_women.jpg',
-                'img/tshirt.jpg'
-            ]),
+            'url' => 'https://picsum.photos/200',
             'product_id' => Product::factory(), //create new product based on ProductFactory, no need ProductSeeder
             'is_main_image' => true,
         ];

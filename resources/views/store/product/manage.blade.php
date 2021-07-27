@@ -91,7 +91,7 @@
                                                 data-is-redeem="{{ $product->is_redeem }}"
                                                 data-weight="{{ $product->weight }}"
                                                 data-point-bonus="{{ $product->point_bonus }}"
-                                                data-image-url="{{ $product->mainImage ? Storage::url($product->mainImage->url) : 'https://via.placeholder.com/200' }}">
+                                                data-image-url="{{$product->mainImage->url }}">
                                                 Edit
                                             </a>
                                             <form id="formDelete{{ $product->id }}" method="POST" class="d-inline-block"

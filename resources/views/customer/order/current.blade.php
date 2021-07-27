@@ -17,7 +17,7 @@
                         <a href="{{ route('payment.show-confirm', ['order_id'=> $order->id]) }}" class="btn bg-teal-500 px-5 rounded-full top-0 right-0 mr-4">
                             Pay this order
                         </a>
-                        <form action="{{ route('my-account.cancel.order', $order->id) }}" method="post">
+                        <form action="{{ route('my-account.order.cancel', $order->id) }}" method="post">
                             @csrf @method('PUT')
                             <button type="submit"
                             class="btn bg-red-500 px-5 rounded-full top-0 right-0 mr-4">
@@ -43,7 +43,7 @@
                             @include('customer.order.refund-form')
                         </div>
                     @elseif($order->status === 'shipping')
-                        <form action="{{ route('my-account.finish.order', $order->id) }}" 
+                        <form action="{{ route('my-account.order.finish', $order->id) }}" 
                         method="POST">
                             @csrf @method('PUT')
                             <button type="submit" class="btn btn--secondary">
